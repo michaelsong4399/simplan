@@ -1,0 +1,59 @@
+{
+    "name": "Schoology Calendar",
+    "description": "A calendar to list all your assignments.",
+    "version": "0.1.0",
+    "manifest_version": 2,
+    "background": {
+        "scripts": ["./background.js"]
+    },
+    "permissions": [
+        "tabs",
+        "notifications",
+        "storage",
+        "https://www.google.com/"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://learn.lcps.org/*"],
+            "exclude_matches": [
+                "https://*.schoology.com/login*",
+                "https://*.schoology.com/register*",
+                "*://asset-cdn.schoology.com/*",
+                "*://developer.schoology.com/*",
+                "*://support.schoology.com/*",
+                "*://info.schoology.com/*",
+                "*://files-cdn.schoology.com/*",
+                "*://status.schoology.com/*",
+                "*://ui.schoology.com/*",
+                "*://www.schoology.com/*",
+                "*://api.schoology.com/*",
+                "*://developers.schoology.com/*",
+                "*://schoology.com/*",
+                "*://support.schoology.com/*"
+            ],
+            "js": ["preload.js"],
+            "run_at": "document_start"
+        },
+        {
+            "matches": ["https://learn.lcps.org/course/*/materials*"],
+            "exclude_matches": [
+                "https://*.schoology.com/login*",
+                "https://*.schoology.com/register*",
+                "*://asset-cdn.schoology.com/*",
+                "*://developer.schoology.com/*",
+                "*://support.schoology.com/*",
+                "*://info.schoology.com/*",
+                "*://files-cdn.schoology.com/*",
+                "*://status.schoology.com/*",
+                "*://ui.schoology.com/*",
+                "*://www.schoology.com/*",
+                "*://api.schoology.com/*",
+                "*://developers.schoology.com/*",
+                "*://schoology.com/*",
+                "*://support.schoology.com/*"
+            ],
+            "js": ["getpage.js"],
+            "run_at": "document_end"
+        }
+    ]
+}
